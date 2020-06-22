@@ -96,10 +96,10 @@ router.post('/signin', (req, res) => {
                 //if it matches
                 if (doesItMatch) {
                   // req.session is the special object that is available to you
-                  user.passwordHash = "***";
+                  userData.passwordHash = "***";
                   req.session.loggedInUser = userData;
                   console.log('Signin', req.session)
-                  res.status(200).json(userData)
+                  v.json(userData)
                 }
                 //if passwords do not match
                 else {
@@ -133,6 +133,7 @@ router.post('/logout', (req, res) => {
     .status(204) //  No Content
     .send();
 })
+//Required
 
 router.get("/user", isLoggedIn, (req, res, next) => {
   res.status(200).json(req.session.loggedInUser);
